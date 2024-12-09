@@ -14,14 +14,15 @@ namespace Worst.Movie.Award.Infrastructure.Repository
         public Awards GetProductorAwards()
         {
             var producerWins = _dbContext.Movies
-                .Where(m => m.Winner == "yes").ToList()
-                .GroupBy(m => m.Producers)
+                .Where(m => m.Winner == "yes").ToList()   
+                .SelectMany(m => m.Producers.Split(new[] { ",", "and" }, StringSplitOptions.None).Select(p => new { Producer = p.Trim(), m.Year }))
+                .GroupBy(m => m.Producer)
                 .Select(g => new
                 {
                     Producer = g.Key,
                     Wins = g.OrderBy(m => m.Year).Select(m => m.Year).ToList()
                 })
-                .Where(x => x.Wins.Count == 2)
+                .Where(x => x.Wins.Count > 1)
                 .ToList();
 
             var intervals = producerWins.SelectMany(p => p.Wins.Zip(p.Wins.Skip(1), (prev, next) => new AwardsPeriod
