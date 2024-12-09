@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Worst.Movie.Award.ApplicationCore\Worst.Movie.Award.ApplicationCore.csproj" />
+    <ProjectReference Include="..\Worst.Movie.Award.Infrastructure\Worst.Movie.Award.Infrastructure.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="Worst.Movie.Award.Tests" />
+	</ItemGroup>
+	
+</Project>
