@@ -21,3 +21,6 @@ GET http://localhost:8080/awards/api
 Testes de Integração
 Para rodar os testes de integração:
 dotnet test
+
+
+![api](https://github.com/user-attachments/assets/36be8beb-d86a-4653-ab21-13a874d4b3f3)
